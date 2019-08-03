@@ -18,8 +18,6 @@ public class UIElement : MonoBehaviour
         if (!initialized) {
             initialized = true;
 
-            Debug.Log("Enabling " + name + " state: " + interfaceStates);
-
             foreach(InterfaceState interfaceState in interfaceStates) 
             {
                 InterfaceManager.Instance.OnEnableInterfaceWithState[interfaceState] += Enable;
