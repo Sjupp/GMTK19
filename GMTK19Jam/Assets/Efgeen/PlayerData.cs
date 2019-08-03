@@ -17,7 +17,7 @@ public class PlayerData
     public PlayerState state;
 
     //Movement
-    public Vector3 movementDirection = Vector3.zero;
+    public Vector3 normalizedMovementDirection = Vector3.zero;
     public float movementSpeed = 10f;
 
     //Rotation

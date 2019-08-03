@@ -45,12 +45,12 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        rigidbody.velocity = data.movementDirection * data.movementSpeed;
+        rigidbody.velocity = data.normalizedMovementDirection * data.movementSpeed;
     }
 
     public void OnMove(Vector3 direction)
     {
-        data.movementDirection = direction;
+        data.normalizedMovementDirection = direction.normalized;
         Rotate(direction);
     }
     private void Rotate(Vector3 direction)
