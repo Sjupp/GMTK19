@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Projectile projectile;
 
+    public Team team;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -122,7 +124,7 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         Projectile temp = Instantiate(projectile, transform.position, transform.rotation, null);
-        //temp.Project(this, transform.rotation * Vector3.forward, 50);
+        temp.Project(this, transform.rotation * Vector3.forward, 50);
 
         //HACK
         //temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);

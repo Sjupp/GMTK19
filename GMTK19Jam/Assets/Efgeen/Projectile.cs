@@ -31,14 +31,26 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
+        if (collider.CompareTag("Untagged"))
+        {
+            Debug.Log(collider);
+            return;
+        }
 
         if (collider.CompareTag("Ball"))
         {
             collider.GetComponent<Ball>().Project(data.source, data.direction, 50f);
         }
 
+        if (collider.CompareTag("Player"))
+        {
+            Player player = collider.GetComponent<Player>();
+            if (player.team == data.source.team)
+            {
+                return;
+            }
+        }
         Destroy(gameObject);
-
     }
 
 }
