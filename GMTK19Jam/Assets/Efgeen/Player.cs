@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
 
                 Ball ball = overlappingColliders[i].GetComponent<Ball>();
 
-                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, 100f);
+                ball.Project(this, transform.rotation * Vector3.forward, 100f);
                 ball.Data.decrementAmount = 0.15f;
 
                 hit = true;
@@ -179,7 +179,11 @@ public class Player : MonoBehaviour
 
         }
 
-        data.ammo--;
+        if (hit)
+        {
+            data.ammo--;
+        }
+
         return hit;
 
     }

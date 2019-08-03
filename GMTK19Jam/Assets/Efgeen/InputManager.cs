@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     public void Upd8(int player)
     {
         Move(player);
-        Kick();
+        Kick(player);
     }
 
     private void Move(int player)
@@ -75,12 +75,12 @@ public class InputManager : MonoBehaviour
 
         //moveDelegate?.Invoke(direction);
     }
-    private void Kick()
+    private void Kick(int player)
     {
 
         if (Input.GetKeyDown(kickKey))
         {
-            kickDelegate?.Invoke();
+            GameManager.INSTANCE.players[player].OnKick();
         }
 
     }
