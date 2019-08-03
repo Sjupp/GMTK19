@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
         if (collider.CompareTag("Ball"))
         {
             collider.GetComponent<Ball>().Project(data.source, data.direction, 50f);
+            collider.GetComponent<Ball>().Data.decrementAmount = 0.15f;
         }
 
         if (collider.CompareTag("Player"))
