@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private PlayerData data = null;
+    public PlayerData Data
+    {
+        get { return data; }
+    }
 
     [SerializeField]
     private new Rigidbody rigidbody;
@@ -134,6 +138,11 @@ public class Player : MonoBehaviour
     private bool Kick()
     {
 
+        if (data.ammo <= 0)
+        {
+            return false;
+        }
+
         bool hit = false;
 
         Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(2, 2, 2));
@@ -170,13 +179,22 @@ public class Player : MonoBehaviour
 
         }
 
+        data.ammo--;
         return hit;
 
     }
     private void Shoot()
     {
+
+        if (data.ammo <= 0)
+        {
+            return;
+        }
+
         Projectile temp = Instantiate(projectile, transform.position, transform.rotation, null);
         temp.Project(this, transform.rotation * Vector3.forward, 50);
+
+        data.ammo--;
 
         //HACK
         //temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);

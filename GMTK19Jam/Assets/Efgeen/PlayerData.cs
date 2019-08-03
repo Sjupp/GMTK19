@@ -28,4 +28,7 @@ public class PlayerData
     public float knockbackDuration = 0.05f;
     public float knockbackTimer = 0.05f;
 
+    public int ammo = 2;
+    private int maxAmmo = 2;
+
 }
