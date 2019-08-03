@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     public KeyCode moveRight = KeyCode.D;
 
     [SerializeField]
+    public KeyCode kickKey = KeyCode.Space;
+
+    [SerializeField]
     private PlayerConfig config = null;
 
     [SerializeField]

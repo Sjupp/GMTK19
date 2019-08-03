@@ -2255,6 +2255,11 @@ PrefabInstance:
       propertyPath: moveRight
       value: 275
       objectReference: {fileID: 0}
+    - target: {fileID: 2242755426075322892, guid: 12a2115d756e7da4a89269681f9e43b4,
+        type: 3}
+      propertyPath: kickKey
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a2115d756e7da4a89269681f9e43b4, type: 3}
 --- !u!4 &726480482 stripped
@@ -2305,10 +2310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477a20edc4674d94e818d51b4458a928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kickStrength: 90
+  kickKickStrength: 100
   moveUp: 119
   moveLeft: 97
   moveDown: 115
   moveRight: 100
+  kickKey: 32
   data:
     state: 0
     normalizedMovementDirection: {x: 0, y: 0, z: 0}
@@ -3807,7 +3815,6 @@ GameObject:
   - component: {fileID: 1757454749}
   - component: {fileID: 1757454751}
   - component: {fileID: 1757454750}
-  - component: {fileID: 1757454752}
   m_Layer: 0
   m_Name: GAME
   m_TagString: Untagged
@@ -3866,7 +3873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17450b6ebf934de48b35fa04c287dd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kickKey: 32
 --- !u!114 &1757454751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3883,18 +3889,6 @@ MonoBehaviour:
   - {fileID: 1168075418}
   - {fileID: 726480483}
   inputManager: {fileID: 1757454750}
---- !u!114 &1757454752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757454746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e143cf088d969334389b47fee45014c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1767941148
 PrefabInstance:
   m_ObjectHideFlags: 0
