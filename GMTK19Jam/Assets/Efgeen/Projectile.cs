@@ -50,6 +50,10 @@ public class Projectile : MonoBehaviour
             {
                 return;
             }
+            else
+            {
+                player.ApplyKnockback(transform.rotation * Vector3.forward, 50f);
+            }
         }
         Destroy(gameObject);
     }
