@@ -5,6 +5,14 @@ using XInputDotNetPure; // Required in C#
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    public KeyCode moveUp = KeyCode.W;
+    [SerializeField]
+    public KeyCode moveLeft = KeyCode.A;
+    [SerializeField]
+    public KeyCode moveDown = KeyCode.S;
+    [SerializeField]
+    public KeyCode moveRight = KeyCode.D;
 
     [SerializeField]
     private PlayerConfig config = null;

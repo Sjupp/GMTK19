@@ -4,16 +4,6 @@ using XInputDotNetPure; // Required in C#
 
 public class InputManager : MonoBehaviour
 {
-
-    [SerializeField]
-    private KeyCode moveUp = KeyCode.W;
-    [SerializeField]
-    private KeyCode moveLeft = KeyCode.A;
-    [SerializeField]
-    private KeyCode moveDown = KeyCode.S;
-    [SerializeField]
-    private KeyCode moveRight = KeyCode.D;
-
     [SerializeField]
     private KeyCode kickKey = KeyCode.Space;
 
@@ -62,24 +52,25 @@ public class InputManager : MonoBehaviour
 
             GameManager.INSTANCE.players[player].OnMove(direction);
         }
-        else {
-            throw new Exception("CONTROLLER NOT CONNECTED!!!!!!!!!!!!!!!!!");
 
-            if (Input.GetKey(moveUp)) {
+        if (!gamePadState.IsConnected || direction == Vector3.zero) {
+            if (Input.GetKey(GameManager.INSTANCE.players[player].moveUp)) {
                 direction.z++;
             }
 
-            if (Input.GetKey(moveLeft)) {
+            if (Input.GetKey(GameManager.INSTANCE.players[player].moveLeft)) {
                 direction.x--;
             }
 
-            if (Input.GetKey(moveDown)) {
+            if (Input.GetKey(GameManager.INSTANCE.players[player].moveDown)) {
                 direction.z--;
             }
 
-            if (Input.GetKey(moveRight)) {
+            if (Input.GetKey(GameManager.INSTANCE.players[player].moveRight)) {
                 direction.x++;
             }
+
+            GameManager.INSTANCE.players[player].OnMove(direction);
         }
 
         //moveDelegate?.Invoke(direction);
