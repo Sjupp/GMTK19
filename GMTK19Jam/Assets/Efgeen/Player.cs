@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using XInputDotNetPure; // Required in C#
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -19,9 +20,22 @@ public class Player : MonoBehaviour
 
     public Team team;
 
+    public GamePadState gamePad;
+
     #region resetvalues
     private Vector3 startPos;
     #endregion
+
+    private void Start() {
+        switch (team) {
+            case Team.One:
+                gamePad = GamePad.GetState(PlayerIndex.One);
+                break;
+            case Team.A:
+                gamePad = GamePad.GetState(PlayerIndex.Two);
+                break;
+        }
+    }
 
     private void Awake()
     {

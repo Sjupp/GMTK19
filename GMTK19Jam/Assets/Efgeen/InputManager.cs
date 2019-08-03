@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using XInputDotNetPure; // Required in C#
 
 public class InputManager : MonoBehaviour
 {
@@ -22,39 +23,66 @@ public class InputManager : MonoBehaviour
     public delegate void KickDelegate();
     public KickDelegate kickDelegate;
 
-    public void Upd8()
+    public void Upd8(int player)
     {
-        Move();
+        Move(player);
         Kick();
     }
 
-    private void Move()
+    private void Move(int player)
     {
-
         Vector3 direction = Vector3.zero;
 
-        if (Input.GetKey(moveUp))
-        {
-            direction.z++;
+        GamePadState gamePadState = GamePad.GetState((PlayerIndex)player);
+        if (gamePadState.IsConnected) {
+            if (gamePadState.DPad.Up == ButtonState.Pressed) {
+                Debug.Log("Player: " + player + " moving up");
+                direction.z++;
+            }
+
+            if (gamePadState.DPad.Left == ButtonState.Pressed) {
+                Debug.Log("Player: " + player + " moving left");
+                direction.x--;
+            }
+
+            if (gamePadState.DPad.Down == ButtonState.Pressed) {
+                Debug.Log("Player: " + player + " moving down");
+                direction.z--;
+            }
+
+            if (gamePadState.DPad.Right == ButtonState.Pressed) {
+                Debug.Log("Player: " + player + " moving right");
+                direction.x++;
+            }
+
+            if(direction == Vector3.zero) {
+                direction.x += gamePadState.ThumbSticks.Left.X;
+                direction.z += gamePadState.ThumbSticks.Left.Y;
+            }
+
+            GameManager.INSTANCE.players[player].OnMove(direction);
+        }
+        else {
+            throw new Exception("CONTROLLER NOT CONNECTED!!!!!!!!!!!!!!!!!");
+
+            if (Input.GetKey(moveUp)) {
+                direction.z++;
+            }
+
+            if (Input.GetKey(moveLeft)) {
+                direction.x--;
+            }
+
+            if (Input.GetKey(moveDown)) {
+                direction.z--;
+            }
+
+            if (Input.GetKey(moveRight)) {
+                direction.x++;
+            }
         }
 
-        if (Input.GetKey(moveLeft))
-        {
-            direction.x--;
-        }
-
-        if (Input.GetKey(moveDown))
-        {
-            direction.z--;
-        }
-
-        if (Input.GetKey(moveRight))
-        {
-            direction.x++;
-        }
-
-        moveDelegate?.Invoke(direction);
-
+        //moveDelegate?.Invoke(direction);
     }
     private void Kick()
     {
@@ -66,4 +94,5 @@ public class InputManager : MonoBehaviour
 
     }
 
+    
 }

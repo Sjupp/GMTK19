@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager INSTANCE = null;
 
     [SerializeField]
-    private Player[] players;
+    public Player[] players;
 
     [SerializeField]
     private InputManager inputManager = null;
@@ -40,11 +40,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
-        inputManager?.Upd8();
-
         for (int i = 0; i < players.Length; i++)
         {
+            //Debug.Log("Updating player " + i);
+            inputManager?.Upd8(i);
             players[i]?.Upd8();
         }
 
