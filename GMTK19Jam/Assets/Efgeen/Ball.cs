@@ -6,6 +6,10 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     private BallData data = null;
+    public BallData Data
+    {
+        get { return data; }
+    }
 
     private void Awake()
     {
@@ -25,7 +29,7 @@ public class Ball : MonoBehaviour
         //GroundCheck();
         //Gravity();
         data.rigidbody.velocity = new Vector3(data.direction.x * data.speed, data.verticalVelocity, data.direction.z * data.speed);
-        data.speed -= 0.15f;
+        data.speed -= data.decrementAmount;
         if (data.speed < 0)
         {
             data.speed = 0;

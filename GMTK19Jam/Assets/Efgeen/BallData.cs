@@ -23,4 +23,6 @@ public class BallData
     public float verticalVelocity;
     public float gravity;
 
+    public float decrementAmount = 0.15f;
+
 }
