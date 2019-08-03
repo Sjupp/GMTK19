@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
             players[i]?.Upd8();
         }
 
+        // end game here
         if(GetTimeLeft().Seconds <= 0 && GetTimeLeft().Minutes <= 0 && GetTimeLeft().Hours <= 0 && InterfaceManager.Instance.InterfaceState == InterfaceState.InGame) {
             InterfaceManager.Instance.UpdateInterfaceState(InterfaceState.GameOver);
         }
