@@ -78,7 +78,7 @@ public class InputManager : MonoBehaviour
     private void Kick(int player)
     {
 
-        if (Input.GetKeyDown(kickKey))
+        if (Input.GetKeyDown(kickKey) || GamePad.GetState((PlayerIndex)player).Buttons.A == ButtonState.Pressed)
         {
             GameManager.INSTANCE.players[player].OnKick();
         }
