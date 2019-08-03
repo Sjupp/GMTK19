@@ -10,8 +10,8 @@ public class AudioInitializer : MonoBehaviour
         ServiceLocator.Initialize();
         ServiceLocator.ProvideAudio(new NewAudioProvider());
         ServiceLocator.GetAudio().LoadSounds();
-        ServiceLocator.GetAudio().PlaySound("Music_Gameplay01");
-        ServiceLocator.GetAudio().PlaySound("VO_ReadyGo");
+        //ServiceLocator.GetAudio().PlaySound("Music_Gameplay01");
+        //ServiceLocator.GetAudio().PlaySound("VO_ReadyGo");
     }
 
     // For testing
