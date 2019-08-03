@@ -17,7 +17,10 @@ public class PlayerScore : MonoBehaviour
 
     private void OnEnable() 
     {
-        ScoreManager.Instance.OnScoreChanged += UpdateScoreText;   
+        ScoreManager.Instance.OnScoreChanged += UpdateScoreText;
+
+        // Initialize the text string with the most up to date value
+        UpdateScoreText(team, 0, ScoreManager.Instance.teamScores[team]);
     }
 
     private void OnDisable() 
@@ -29,6 +32,11 @@ public class PlayerScore : MonoBehaviour
     {
         if(this.team == team) 
         {
+            if(text == null) 
+            {
+                text = GetComponent<Text>();
+            }
+
             text.text = team + " score: " + newScore;
         }
     }

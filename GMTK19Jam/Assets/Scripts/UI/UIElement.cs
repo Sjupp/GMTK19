@@ -15,7 +15,8 @@ public class UIElement : MonoBehaviour
 
     private void Awake() 
     {
-        if (!initialized) {
+        if (!initialized) 
+        {
             initialized = true;
 
             foreach(InterfaceState interfaceState in interfaceStates) 

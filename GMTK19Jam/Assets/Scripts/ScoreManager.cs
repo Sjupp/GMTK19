@@ -10,11 +10,14 @@ public class ScoreManager : Singleton<ScoreManager>
     public delegate void ScoreChangedDelegate(Team team, float delta, float newScore);
     public event ScoreChangedDelegate OnScoreChanged;
 
-    public void UpdateScore(Team team, float delta) {
-        try {
+    public void UpdateScore(Team team, float delta) 
+    {
+        try 
+        {
             float oldSore = teamScores[team];
         }
-        catch(System.Exception e) {
+        catch(System.Exception e) 
+        {
             Debug.LogError("ScoreManager UpdateScore error: " + e.Message);
             return;
         }
@@ -23,13 +26,14 @@ public class ScoreManager : Singleton<ScoreManager>
         OnScoreChanged?.Invoke(team, delta, newScore);
     }
 
-    private void Update() {
-        //// FOR DEBUG PURPOSES ONLY
-        //if (Input.GetKeyDown(KeyCode.Alpha1)) {
-        //    UpdateScore(Team.One, 1);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.A)) {
-        //    UpdateScore(Team.A, 1);
-        //}
-    }
+    //private void Update() 
+    //{
+    //    //// FOR DEBUG PURPOSES ONLY
+    //    //if (Input.GetKeyDown(KeyCode.Alpha1)) {
+    //    //    UpdateScore(Team.One, 1);
+    //    //}
+    //    //else if (Input.GetKeyDown(KeyCode.A)) {
+    //    //    UpdateScore(Team.A, 1);
+    //    //}
+    //}
 }

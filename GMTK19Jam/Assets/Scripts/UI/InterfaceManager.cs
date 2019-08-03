@@ -85,4 +85,9 @@ public class InterfaceManager : Singleton<InterfaceManager> {
     {
         //Debug.Log("Disabling " + interfaceState);
     }
+
+    public void QuitGame() 
+    {
+        Application.Quit();
+    }
 }
