@@ -83,14 +83,18 @@ public class Player : MonoBehaviour
 
         bool hit = false;
 
-        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(5, 5, 5));
+        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(2, 2, 2));
 
         for (int i = 0; i < overlappingColliders.Length; i++)
         {
 
             if (overlappingColliders[i].tag == "Ball")
             {
-                //Kick It
+
+                Ball ball = overlappingColliders[i].GetComponent<Ball>();
+
+                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, 75f);
+
                 hit = true;
                 continue;
             }
@@ -118,14 +122,16 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         Projectile temp = Instantiate(projectile, transform.position, transform.rotation, null);
-        temp.Project(this, transform.rotation * Vector3.forward, 50);
-        Destroy(temp.gameObject, 0.5f);
+        //temp.Project(this, transform.rotation * Vector3.forward, 50);
+
+        //HACK
+        //temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);
+        //Destroy(temp.gameObject, 0.5f);
     }
 
     public void OnDash()
     {
         Debug.Log("[Player.Dash] : Dashed");
-
     }
 
 
@@ -133,7 +139,7 @@ public class Player : MonoBehaviour
     {
         data.state |= PlayerState.Knockback;
         data.knockbackTimer = data.knockbackDuration;
-        rigidbody.AddForce(direction * power, ForceMode.Impulse);
+        rigidbody.velocity = direction * power;
     }
 
 }

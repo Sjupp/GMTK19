@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum ProjectileState
 {
-    None,
+    None = 0,
     Moving = 1 << 0
 }
 
@@ -20,5 +20,7 @@ public class ProjectileData
 
     public float projectDuration;
     public float projectTimer;
+
+    public Rigidbody rigidbody;
 
 }

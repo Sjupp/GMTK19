@@ -8,17 +8,15 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private ProjectileData data = null;
 
-    [SerializeField]
-    private new Rigidbody rigidbody;
-
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        data.rigidbody = GetComponent<Rigidbody>();
     }
+
     public void Project(Player source, Vector3 direction, float speed)
     {
         data.source = source;
-        data.direction = direction;
+        data.direction = direction.normalized;
         data.speed = speed;
     }
 
@@ -28,7 +26,19 @@ public class Projectile : MonoBehaviour
     }
     private void Move()
     {
-        rigidbody.velocity = data.direction * data.speed;
+        data.rigidbody.velocity = data.direction * data.speed;
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+
+        if (collider.CompareTag("Ball"))
+        {
+            collider.GetComponent<Ball>().Project(data.source, data.direction, 50f);
+        }
+
+        Destroy(gameObject);
+
     }
 
 }
