@@ -7,6 +7,7 @@ TagManager:
   - Ball
   - Horizontal Wall
   - Vertical Wall
+  - AudioSources
   layers:
   - Default
   - TransparentFX
