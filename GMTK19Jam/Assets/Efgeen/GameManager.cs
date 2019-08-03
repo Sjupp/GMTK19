@@ -50,4 +50,26 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void StartGameRound() 
+    {
+        // Reset values and positions
+        ResetValues();
+        ResetInGameObjects();
+
+        // Update interface
+        InterfaceManager.Instance.UpdateInterfaceState(InterfaceState.InGame);
+    }
+
+    private void ResetValues() 
+    {
+        ScoreManager.Instance.Reset();
+    }
+
+    private void ResetInGameObjects() 
+    {
+        foreach (Player player in players) 
+        {
+            player.Reset();
+        }
+    }
 }

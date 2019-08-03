@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,14 @@ public class ScoreManager : Singleton<ScoreManager>
 
         float newScore = teamScores[team] += delta;
         OnScoreChanged?.Invoke(team, delta, newScore);
+    }
+
+    public void Reset() {
+        //teamScores[Team.A] = 0;
+        //teamScores[Team.One] = 0;
+
+        UpdateScore(Team.One, -teamScores[Team.One]);
+        UpdateScore(Team.A, -teamScores[Team.A]);
     }
 
     //private void Update() 

@@ -19,9 +19,17 @@ public class Player : MonoBehaviour
 
     public Team team;
 
+    #region resetvalues
+    private Vector3 startPos;
+    #endregion
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+
+        #region setresetvalues
+        startPos = transform.position;
+        #endregion
     }
 
     public void Upd8()
@@ -144,4 +152,7 @@ public class Player : MonoBehaviour
         rigidbody.velocity = direction * power;
     }
 
+    public void Reset() {
+        transform.position = startPos;
+    }
 }
