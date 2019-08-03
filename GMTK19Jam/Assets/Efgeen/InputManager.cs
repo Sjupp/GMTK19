@@ -4,9 +4,6 @@ using XInputDotNetPure; // Required in C#
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField]
-    private KeyCode kickKey = KeyCode.Space;
-
     public delegate void MoveDelegate(Vector3 direction);
     public MoveDelegate moveDelegate;
 
@@ -78,7 +75,7 @@ public class InputManager : MonoBehaviour
     private void Kick(int player)
     {
 
-        if (Input.GetKeyDown(kickKey) || GamePad.GetState((PlayerIndex)player).Buttons.A == ButtonState.Pressed)
+        if (Input.GetKeyDown(GameManager.INSTANCE.players[player].kickKey) || GamePad.GetState((PlayerIndex)player).Buttons.A == ButtonState.Pressed)
         {
             GameManager.INSTANCE.players[player].OnKick();
         }

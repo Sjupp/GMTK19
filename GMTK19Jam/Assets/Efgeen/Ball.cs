@@ -26,6 +26,8 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
+
+        Rotate();
         //GroundCheck();
         //Gravity();
         data.rigidbody.velocity = new Vector3(data.direction.x * data.speed, data.verticalVelocity, data.direction.z * data.speed);
@@ -34,6 +36,13 @@ public class Ball : MonoBehaviour
         {
             data.speed = 0;
         }
+
+    }
+
+    private void Rotate()
+    {
+        data.rotationDirection = new Vector3(UnityEngine.Random.Range(0.5f, 1f), UnityEngine.Random.Range(0.5f, 1f), UnityEngine.Random.Range(0.5f, 1f));
+        transform.rotation = Quaternion.Euler(data.rotationDirection * data.speed * 5);
     }
 
     private void GroundCheck()
