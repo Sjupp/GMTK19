@@ -6,6 +6,10 @@ using XInputDotNetPure; // Required in C#
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    public float kickStrength = 90f;
+    [SerializeField]
+    public float kickKickStrength = 100f;
+    [SerializeField]
     public KeyCode moveUp = KeyCode.W;
     [SerializeField]
     public KeyCode moveLeft = KeyCode.A;
@@ -71,7 +75,7 @@ public class Player : MonoBehaviour
 
                 Ball ball = overlappingColliders[i].GetComponent<Ball>();
 
-                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, 50f);
+                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, kickStrength);
                 ball.Data.decrementAmount = 2.5f;
             }
 
@@ -155,7 +159,7 @@ public class Player : MonoBehaviour
 
                 Ball ball = overlappingColliders[i].GetComponent<Ball>();
 
-                ball.Project(this, transform.rotation * Vector3.forward, 100f);
+                ball.Project(this, transform.rotation * Vector3.forward, kickKickStrength);
                 ball.Data.decrementAmount = 0.15f;
 
                 hit = true;
