@@ -210,7 +210,6 @@ public class Player : MonoBehaviour
         //HACK
         //temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);
 
-        Destroy(temp.gameObject, 0.25f);
     }
 
     public void OnDash()
