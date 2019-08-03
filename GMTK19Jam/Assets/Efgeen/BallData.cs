@@ -25,4 +25,6 @@ public class BallData
 
     public float decrementAmount = 0.15f;
 
+    public Vector3 rotationDirection;
+
 }
