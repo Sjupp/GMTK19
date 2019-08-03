@@ -8,9 +8,10 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        // TODO:
-        // Check for valid object
-        // Maybe a tag or something
-        ScoreManager.Instance.UpdateScore(TeamHelper.GetOppositeTeam(myTeam), 1);
+        if (other.CompareTag("Ball")) 
+        {
+            ScoreManager.Instance.UpdateScore(TeamHelper.GetOppositeTeam(myTeam), 1);
+            GameManager.INSTANCE.ResetInGameObjects();
+        }
     }
 }

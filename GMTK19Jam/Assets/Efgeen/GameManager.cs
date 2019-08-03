@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         ScoreManager.Instance.Reset();
     }
 
-    private void ResetInGameObjects() 
+    public void ResetInGameObjects() 
     {
         foreach (Player player in players) 
         {
