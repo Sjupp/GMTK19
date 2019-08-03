@@ -31,7 +31,14 @@ public class Ball : MonoBehaviour
         //GroundCheck();
         //Gravity();
         data.rigidbody.velocity = new Vector3(data.direction.x * data.speed, data.verticalVelocity, data.direction.z * data.speed);
-        data.speed -= data.decrementAmount;
+        if (data.speed > 20.0f || data.speed < 10.0f)
+        {
+            data.speed -= data.decrementAmount;
+        }
+        else
+        {
+            data.speed *= 0.99f; 
+        }
         if (data.speed < 0)
         {
             data.speed = 0;
