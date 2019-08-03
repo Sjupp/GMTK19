@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InterfaceState { Initial, MainMenu, InGame };
+public enum InterfaceState { Initial, MainMenu, OptionsMenu, InGame, InGameMenu};
 public class InterfaceManager : Singleton<InterfaceManager> {
 
     public delegate void EnableInterface();
@@ -11,14 +11,14 @@ public class InterfaceManager : Singleton<InterfaceManager> {
     public Dictionary<InterfaceState, EnableInterface> OnEnableInterfaceWithState = new Dictionary<InterfaceState, EnableInterface>();
     public Dictionary<InterfaceState, EnableInterface> OnDisableInterfaceWithState = new Dictionary<InterfaceState, EnableInterface>();
 
-    InterfaceState interfaceState = InterfaceState.Initial;
+    [SerializeField] InterfaceState interfaceState = InterfaceState.Initial;
     public InterfaceState InterfaceState 
     {
         get { return interfaceState; }
         private set { interfaceState = value; }
     }
 
-    void OnEnable() 
+    void Awake() 
     {
         InitializeInterfaceStates();
     }
@@ -33,11 +33,15 @@ public class InterfaceManager : Singleton<InterfaceManager> {
     {
         OnEnableInterfaceWithState[InterfaceState.Initial] = new EnableInterface(EnableInterfaceWithState);
         OnEnableInterfaceWithState[InterfaceState.MainMenu] = new EnableInterface(EnableInterfaceWithState);
+        OnEnableInterfaceWithState[InterfaceState.OptionsMenu] = new EnableInterface(EnableInterfaceWithState);
         OnEnableInterfaceWithState[InterfaceState.InGame] = new EnableInterface(EnableInterfaceWithState);
+        OnEnableInterfaceWithState[InterfaceState.InGameMenu] = new EnableInterface(EnableInterfaceWithState);
 
         OnDisableInterfaceWithState[InterfaceState.Initial] = new EnableInterface(DisableInterfaceWithState);
         OnDisableInterfaceWithState[InterfaceState.MainMenu] = new EnableInterface(DisableInterfaceWithState);
+        OnDisableInterfaceWithState[InterfaceState.OptionsMenu] = new EnableInterface(DisableInterfaceWithState);
         OnDisableInterfaceWithState[InterfaceState.InGame] = new EnableInterface(DisableInterfaceWithState);
+        OnDisableInterfaceWithState[InterfaceState.InGameMenu] = new EnableInterface(DisableInterfaceWithState);
     }
 
     /// <summary>
@@ -58,7 +62,7 @@ public class InterfaceManager : Singleton<InterfaceManager> {
             OnDisableInterfaceWithState[interfaceState]?.Invoke();
         }
         catch(System.Exception e) 
-    {
+        {
             Debug.Log(e);
         }
         interfaceState = newState;
