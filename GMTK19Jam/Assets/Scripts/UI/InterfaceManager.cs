@@ -55,7 +55,7 @@ public class InterfaceManager : Singleton<InterfaceManager> {
     /// OnEnableInterfaceWithState on the new
     /// </summary>
     /// <param name="newState"></param>
-    void UpdateInterfaceState(InterfaceState newState) 
+    public void UpdateInterfaceState(InterfaceState newState) 
     {
         try 
         {
