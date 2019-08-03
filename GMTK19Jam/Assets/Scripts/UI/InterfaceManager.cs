@@ -65,7 +65,19 @@ public class InterfaceManager : Singleton<InterfaceManager> {
         {
             Debug.Log(e);
         }
+
+        if(interfaceState != InterfaceState.Initial) {
+            ServiceLocator.GetAudio().PlaySound("UI_Select");
+        }
+
+        if (newState ==  InterfaceState.InGame) {
+            Debug.Log("Entering game");
+            ServiceLocator.GetAudio().PlaySound("Music_Gameplay01");
+            ServiceLocator.GetAudio().PlaySound("VO_ReadyGo");
+        }
         interfaceState = newState;
+
+        // Successfully changed state
 
         OnEnableInterfaceWithState[newState]?.Invoke();
     }
