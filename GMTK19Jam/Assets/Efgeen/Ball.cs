@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    #region resetvalues
+    private Vector3 startPos;
+    #endregion
 
     [SerializeField]
     private BallData data = null;
@@ -14,6 +17,10 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         data.rigidbody = GetComponent<Rigidbody>();
+
+        #region setresetvalues
+        startPos = transform.position;
+        #endregion
     }
 
     public void Project(Player source, Vector3 direction, float speed)
@@ -86,4 +93,7 @@ public class Ball : MonoBehaviour
 
     }
 
+    public void Reset() {
+        transform.position = startPos;
+    }
 }

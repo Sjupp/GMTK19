@@ -15,7 +15,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         try 
         {
-            float oldSore = teamScores[team];
+            float oldScore = teamScores[team];
         }
         catch(System.Exception e) 
         {

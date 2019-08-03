@@ -25,7 +25,8 @@ public class PlayerScore : MonoBehaviour
 
     private void OnDisable() 
     {
-        ScoreManager.Instance.OnScoreChanged -= UpdateScoreText;
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.OnScoreChanged -= UpdateScoreText;
     }
 
     void UpdateScoreText(Team team, float delta, float newScore) 

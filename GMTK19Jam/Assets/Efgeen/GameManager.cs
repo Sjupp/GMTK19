@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private InputManager inputManager = null;
 
+    public DateTime matchStartTime;
+    [SerializeField]
+    public float matchLength = 5400;
+
     private void Awake()
     {
         
@@ -47,6 +51,17 @@ public class GameManager : MonoBehaviour
             players[i]?.Upd8();
         }
 
+        if(GetTimeLeft().Seconds <= 0 && GetTimeLeft().Minutes <= 0 && GetTimeLeft().Hours <= 0 && InterfaceManager.Instance.InterfaceState == InterfaceState.InGame) {
+            InterfaceManager.Instance.UpdateInterfaceState(InterfaceState.GameOver);
+        }
+    }
+
+    public TimeSpan GetTimeLeft() {
+        TimeSpan maxTime = new TimeSpan(0, 0, (int)GameManager.INSTANCE.matchLength);
+        //maxTime.A
+        TimeSpan deltaDateTime = maxTime - (DateTime.Now - GameManager.INSTANCE.matchStartTime);
+
+        return deltaDateTime;
     }
 
     public void StartGameRound() 
@@ -62,6 +77,8 @@ public class GameManager : MonoBehaviour
     private void ResetValues() 
     {
         ScoreManager.Instance.Reset();
+
+        matchStartTime = DateTime.Now;
     }
 
     public void ResetInGameObjects() 
@@ -69,6 +86,10 @@ public class GameManager : MonoBehaviour
         foreach (Player player in players) 
         {
             player.Reset();
+        }
+        Ball ball = FindObjectOfType<Ball>();
+        if(ball != null) {
+            ball.Reset();
         }
     }
 }

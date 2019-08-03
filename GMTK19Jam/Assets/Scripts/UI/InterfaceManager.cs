@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InterfaceState { Initial, MainMenu, OptionsMenu, InGame, InGameMenu};
+public enum InterfaceState { Initial, MainMenu, OptionsMenu, InGame, InGameMenu, GameOver};
 public class InterfaceManager : Singleton<InterfaceManager> {
 
     public delegate void EnableInterface();
@@ -36,12 +36,14 @@ public class InterfaceManager : Singleton<InterfaceManager> {
         OnEnableInterfaceWithState[InterfaceState.OptionsMenu] = new EnableInterface(EnableInterfaceWithState);
         OnEnableInterfaceWithState[InterfaceState.InGame] = new EnableInterface(EnableInterfaceWithState);
         OnEnableInterfaceWithState[InterfaceState.InGameMenu] = new EnableInterface(EnableInterfaceWithState);
+        OnEnableInterfaceWithState[InterfaceState.GameOver] = new EnableInterface(EnableInterfaceWithState);
 
         OnDisableInterfaceWithState[InterfaceState.Initial] = new EnableInterface(DisableInterfaceWithState);
         OnDisableInterfaceWithState[InterfaceState.MainMenu] = new EnableInterface(DisableInterfaceWithState);
         OnDisableInterfaceWithState[InterfaceState.OptionsMenu] = new EnableInterface(DisableInterfaceWithState);
         OnDisableInterfaceWithState[InterfaceState.InGame] = new EnableInterface(DisableInterfaceWithState);
         OnDisableInterfaceWithState[InterfaceState.InGameMenu] = new EnableInterface(DisableInterfaceWithState);
+        OnDisableInterfaceWithState[InterfaceState.GameOver] = new EnableInterface(DisableInterfaceWithState);
     }
 
     /// <summary>
