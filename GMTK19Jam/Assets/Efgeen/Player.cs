@@ -46,6 +46,27 @@ public class Player : MonoBehaviour
         #endregion
     }
 
+    private void Update()
+    {
+
+        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(1.01f, 1.01f, 1.01f));
+
+        for (int i = 0; i < overlappingColliders.Length; i++)
+        {
+
+            if (overlappingColliders[i].tag == "Ball")
+            {
+
+                Ball ball = overlappingColliders[i].GetComponent<Ball>();
+
+                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, 50f);
+                ball.Data.decrementAmount = 2.5f;
+            }
+
+        }
+
+    }
+
     public void Upd8()
     {
 
@@ -117,7 +138,8 @@ public class Player : MonoBehaviour
 
                 Ball ball = overlappingColliders[i].GetComponent<Ball>();
 
-                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, 75f);
+                ball.Project(this, new Vector3((ball.transform.position.x - transform.position.x), 5f, (ball.transform.position.z - transform.position.z)).normalized, 100f);
+                ball.Data.decrementAmount = 0.15f;
 
                 hit = true;
                 continue;
