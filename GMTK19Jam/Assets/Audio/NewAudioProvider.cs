@@ -8,7 +8,8 @@ public class NewAudioProvider : IAudioService
     private GameObject audioSourceContainer;
 
     //Player
-    private AudioSource[] kickAudioSource;
+    private AudioSource[] kickBallAudioSource;
+    private AudioSource[] kickPlayerAudioSource;
     private AudioSource[] projectileAudioSource;
     private AudioSource[] projectileExplosionAudioSource;
     private AudioSource[] walkAudioSource;
@@ -21,13 +22,18 @@ public class NewAudioProvider : IAudioService
     //UI
     private AudioSource uiSelectAudioSource;
 
+    //Misc
+    private AudioSource[] ExplosionAudioSource;
+
+    //Music
     private AudioSource musicGameplay01AudioSource;
 
     public void LoadSounds()
     {
         audioSourceContainer = GameObject.FindGameObjectWithTag("AudioSources");
 
-        kickAudioSource = InstantiateAudioSources(kickAudioSource, "Player_Kick");
+        kickBallAudioSource = InstantiateAudioSources(kickBallAudioSource, "Player_KickBall");
+        kickPlayerAudioSource = InstantiateAudioSources(kickPlayerAudioSource, "Player_KickPlayer");
         projectileAudioSource = InstantiateAudioSources(projectileAudioSource, "Player_Projectile");
         projectileExplosionAudioSource = InstantiateAudioSources(projectileExplosionAudioSource, "Player_ProjectileExplosion");
         walkAudioSource = InstantiateAudioSources(walkAudioSource, "Player_Walk");
@@ -36,6 +42,8 @@ public class NewAudioProvider : IAudioService
         goalAudioSource = InstantiateAudioSources(goalAudioSource, "VO_Goal");
         readyGoAudioSource = InstantiateAudioSources(readyGoAudioSource, "VO_ReadyGo");
         publicCheerAudioSource = InstantiateAudioSources(publicCheerAudioSource, "VO_PublicCheer");
+
+        ExplosionAudioSource = InstantiateAudioSources(ExplosionAudioSource, "Explosion");
 
         uiSelectAudioSource = instantiateSingleAudioSource(uiSelectAudioSource, "UI_Select");
 
@@ -83,8 +91,12 @@ public class NewAudioProvider : IAudioService
     {
         switch (soundID)
         {
-            case "Player_Kick":
-                PlaySoundFromArray(kickAudioSource);
+            case "Player_KickBall":
+                PlaySoundFromArray(kickBallAudioSource);
+                break;
+
+            case "Player_KickPlayer":
+                PlaySoundFromArray(kickPlayerAudioSource);
                 break;
 
             case "Player_Projectile":
@@ -111,6 +123,10 @@ public class NewAudioProvider : IAudioService
                 PlaySoundFromArray(publicCheerAudioSource);
                 break;
 
+            case "Explosion":
+                PlaySoundFromArray(ExplosionAudioSource);
+                PlaySoundFromArray(kickBallAudioSource);
+                break;
 
             case "UI_Select":
                 uiSelectAudioSource.Play();

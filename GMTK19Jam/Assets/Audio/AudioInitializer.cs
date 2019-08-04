@@ -25,11 +25,11 @@ public class AudioInitializer : MonoBehaviour
     }
 
     // For testing
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        ServiceLocator.GetAudio().PlaySound("UI_Select");
-    //    }
-    //}
+    void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    ServiceLocator.GetAudio().PlaySound("Explosion");
+        //}
+    }
 }
