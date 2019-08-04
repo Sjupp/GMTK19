@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameOverUI : MonoBehaviour
 {
     Text text;
-    void Start()
+    void OnEnable()
     {
         text = GetComponent<Text>();
 
