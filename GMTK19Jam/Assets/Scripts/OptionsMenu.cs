@@ -17,7 +17,13 @@ public class OptionsMenu : MonoBehaviour
 
         switch (matchLength.options[matchLength.value].text) {
             case "1 minute":
-                GameManager.INSTANCE.matchLength = 60;
+                GameManager.INSTANCE.matchLength = 1*60;
+                break;
+            case "2 minutes":
+                GameManager.INSTANCE.matchLength = 2*60;
+                break;
+            case "3 minutes":
+                GameManager.INSTANCE.matchLength = 3*60;
                 break;
             case "5 minutes":
                 GameManager.INSTANCE.matchLength = 5*60;

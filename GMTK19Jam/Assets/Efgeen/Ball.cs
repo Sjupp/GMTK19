@@ -157,6 +157,7 @@ public class Ball : MonoBehaviour
 
     public void Reset() {
         transform.position = startPos;
-        data.rigidbody.velocity = Vector3.zero;
+        if(data.rigidbody != null)
+            data.rigidbody.velocity = Vector3.zero;
     }
 }

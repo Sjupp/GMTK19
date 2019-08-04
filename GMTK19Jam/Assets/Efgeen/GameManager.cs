@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     public Player[] players;
+    [SerializeField]
+    private Ball ball;
 
     [SerializeField]
     private InputManager inputManager = null;
@@ -88,9 +90,10 @@ public class GameManager : MonoBehaviour
         {
             player.Reset();
         }
-        Ball ball = FindObjectOfType<Ball>();
-        if(ball != null) {
-            ball.Reset();
+        if(ball == null) {
+            throw new Exception("GAME MANAGER ERROR: WOULD YOU KINDLY INSERT THE BALL INTO THE VARIABLE SLOT");
         }
+
+        ball.Reset();
     }
 }
