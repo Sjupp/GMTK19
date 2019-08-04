@@ -4,7 +4,10 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     #region resetvalues
+    [SerializeField]
     private Vector3 startPos;
+    [SerializeField]
+    private Quaternion startRot;
     #endregion
 
     private Vector3 p1goal = new Vector3(-20, 1, 0);
@@ -21,9 +24,9 @@ public class Ball : MonoBehaviour
     {
         data.rigidbody = GetComponent<Rigidbody>();
 
-        #region setresetvalues
-        startPos = transform.position;
-        #endregion
+        //#region setresetvalues
+        //startPos = transform.position;
+        //#endregion
     }
 
     public void Project(Player source, Vector3 direction, float speed)
@@ -157,7 +160,12 @@ public class Ball : MonoBehaviour
 
     public void Reset() {
         transform.position = startPos;
-        if(data.rigidbody != null)
-            data.rigidbody.velocity = Vector3.zero;
+        transform.rotation = startRot;
+        data.speed = 0;
+
+        //if (data.rigidbody != null)
+        //    GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //else
+        //    Debug.LogWarning("Ball has no rigidbody");
     }
 }
