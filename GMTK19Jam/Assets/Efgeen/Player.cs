@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
                 gamePad = GamePad.GetState(PlayerIndex.Two);
                 break;
         }
+        anim.SetInteger("legCount", 2);
     }
 
     private void Awake()
@@ -115,7 +116,6 @@ public class Player : MonoBehaviour
         }
         else if (rigidbody.velocity.sqrMagnitude > 1.0f && anim.GetBool("isRunning") == false)
         {
-            Debug.Log("running");
             anim.SetBool("isRunning", true);
         }
 
@@ -209,6 +209,7 @@ public class Player : MonoBehaviour
         if (hit)
         {
             data.ammo--;
+            ReduceLegCount();
         }
 
         return hit;
@@ -226,6 +227,7 @@ public class Player : MonoBehaviour
         //temp.Project(this, transform.rotation * Vector3.forward, 50);
 
         data.ammo--;
+        ReduceLegCount();
 
         //HACK
         temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);
@@ -249,5 +251,18 @@ public class Player : MonoBehaviour
         transform.position = startPos;
         transform.rotation = Quaternion.Euler(startRot);
         data.ammo = 2;
+    }
+
+    private void ReduceLegCount()
+    {
+        var thing = anim.GetInteger("legCount");
+        if (thing == 2)
+        {
+            anim.SetInteger("legCount", 1);
+        }
+        else if (thing == 1)
+        {
+            anim.SetInteger("legCount", 0);
+        }
     }
 }

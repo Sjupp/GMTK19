@@ -57,7 +57,9 @@ public class Legspawner : MonoBehaviour
 
             ServiceLocator.GetAudio().PlaySound("Pickup");
 
-            collider.GetComponent<Player>().Data.ammo = 2;
+            var player = collider.GetComponent<Player>();
+            player.Data.ammo = 2;
+            player.anim.SetInteger("legCount", 2);
 
             legObj.SetActive(false);
             timer = maxTimer;
