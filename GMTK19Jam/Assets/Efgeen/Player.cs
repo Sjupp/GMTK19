@@ -231,5 +231,6 @@ public class Player : MonoBehaviour
 
     public void Reset() {
         transform.position = startPos;
+        data.ammo = 2;
     }
 }
