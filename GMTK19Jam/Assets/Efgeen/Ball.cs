@@ -7,10 +7,6 @@ public class Ball : MonoBehaviour
     private Vector3 startPos;
     #endregion
 
-    private Vector3 p1goal = new Vector3(-20, 1, 0);
-    private Vector3 p2goal = new Vector3(20, 1, 0);
-    private Vector3 p0, p1, p2;
-
     [SerializeField]
     private BallData data = null;
     public BallData Data
