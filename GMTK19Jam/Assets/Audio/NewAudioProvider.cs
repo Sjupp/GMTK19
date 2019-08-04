@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewAudioProvider : IAudioService
+public class NewAudioProvider : MonoBehaviour, IAudioService
 {
 
     private GameObject audioSourceContainer;
@@ -26,7 +26,9 @@ public class NewAudioProvider : IAudioService
     private AudioSource[] ExplosionAudioSource;
 
     //Music
-    private AudioSource musicGameplay01AudioSource;
+    private AudioSource musicIntroAudioSource;
+    private AudioSource musicLoopAudioSource;
+    private LoopStarter loopStarter;
 
     public void LoadSounds()
     {
@@ -49,7 +51,9 @@ public class NewAudioProvider : IAudioService
 
 
 
-        musicGameplay01AudioSource = instantiateSingleAudioSource(musicGameplay01AudioSource, "Music_Gameplay01");
+        musicIntroAudioSource = instantiateSingleAudioSource(musicIntroAudioSource, "Music_Intro");
+        musicLoopAudioSource = instantiateSingleAudioSource(musicLoopAudioSource, "Music_Loop");
+        loopStarter = getLoopStarter();
     }
 
     private AudioSource instantiateSingleAudioSource(AudioSource audioSource, string soundID)
@@ -57,6 +61,11 @@ public class NewAudioProvider : IAudioService
         Transform tempTransform = audioSourceContainer.transform.Find(soundID);
         audioSource = tempTransform.GetComponent<AudioSource>();
         return audioSource;
+    }
+
+    private LoopStarter getLoopStarter()
+    {
+        return musicLoopAudioSource.GetComponent<LoopStarter>();
     }
 
     private AudioSource[] InstantiateAudioSources(AudioSource[] audioSource, string soundID)
@@ -134,7 +143,12 @@ public class NewAudioProvider : IAudioService
 
 
             case "Music_Gameplay01":
-                musicGameplay01AudioSource.Play();
+                musicIntroAudioSource.Play();
+                loopStarter.StartDelayedLoop();
+                break;
+
+            case "Music_Loop":
+                musicLoopAudioSource.Play();
                 break;
 
             default:
@@ -143,6 +157,7 @@ public class NewAudioProvider : IAudioService
         }
 
     }
+
 
     private void PlaySoundFromArray(AudioSource[] audioSourceToPlay)
     {
@@ -166,7 +181,13 @@ public class NewAudioProvider : IAudioService
 
     public void StopSound(string soundID)
     {
-
+        switch (soundID)
+        {
+            case "Music_Gameplay01" :
+                musicLoopAudioSource.Stop();
+                musicIntroAudioSource.Stop();
+                break;
+        }
     }
 
     
