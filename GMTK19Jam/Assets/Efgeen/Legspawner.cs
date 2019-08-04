@@ -55,6 +55,8 @@ public class Legspawner : MonoBehaviour
                 return;
             }
 
+            ServiceLocator.GetAudio().PlaySound("Pickup");
+
             collider.GetComponent<Player>().Data.ammo = 2;
 
             legObj.SetActive(false);

@@ -26,6 +26,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
 
     //Misc
     private AudioSource[] ExplosionAudioSource;
+    private AudioSource[] PickupAudioSource;
 
     //Music
     private AudioSource musicIntroAudioSource;
@@ -43,6 +44,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
         projectileExplosionAudioSource = InstantiateAudioSources(projectileExplosionAudioSource, "Player_ProjectileExplosion");
         walkAudioSource = InstantiateAudioSources(walkAudioSource, "Player_Walk");
         noAmmoAudioSource = InstantiateAudioSources(noAmmoAudioSource, "Player_NoAmmo");
+        PickupAudioSource = InstantiateAudioSources(PickupAudioSource, "Pickup");
 
 
         goalAudioSource = InstantiateAudioSources(goalAudioSource, "VO_Goal");
@@ -144,6 +146,10 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
             case "Explosion":
                 PlaySoundFromArray(ExplosionAudioSource);
                 PlaySoundFromArray(kickBallAudioSource);
+                break;
+
+            case "Pickup":
+                PlaySoundFromArray(PickupAudioSource);
                 break;
 
             case "UI_Select":
