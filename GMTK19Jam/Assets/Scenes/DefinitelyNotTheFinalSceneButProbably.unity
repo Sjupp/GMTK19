@@ -2536,12 +2536,12 @@ PrefabInstance:
     - target: {fileID: 3727760057385652909, guid: 6c7ef9cd7ae288d42bb755beceacfb43,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3727760057385652909, guid: 6c7ef9cd7ae288d42bb755beceacfb43,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c7ef9cd7ae288d42bb755beceacfb43, type: 3}
@@ -3139,6 +3139,11 @@ PrefabInstance:
       propertyPath: startRot.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2242755426075322892, guid: 12a2115d756e7da4a89269681f9e43b4,
+        type: 3}
+      propertyPath: kickKickStrength
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2242755426075322896, guid: 12a2115d756e7da4a89269681f9e43b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3310,7 +3315,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2661b8231e72a214d802ce3812850118, type: 2}
+  - {fileID: 2100000, guid: faba55cec2478bc4d81b7b3069a40dca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3932,12 +3937,12 @@ PrefabInstance:
     - target: {fileID: 8129701994316164645, guid: 76c66fe0b3862b846aab133bf9e39f6c,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8129701994316164645, guid: 76c66fe0b3862b846aab133bf9e39f6c,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8129701994316164645, guid: 76c66fe0b3862b846aab133bf9e39f6c,
         type: 3}
