@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
 
     public void Project(Player source, Vector3 direction, float speed)
     {
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         ServiceLocator.GetAudio().PlaySound("Player_Projectile");
         CameraShake.INSTANCE?.Shake(15f, 0.1f);
         data.source = source;
@@ -54,7 +55,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                player.ApplyKnockback(transform.rotation * Vector3.forward, 50f);
+                player.ApplyKnockback(data.direction, 50f);
             }
         }
         ServiceLocator.GetAudio().PlaySound("Explosion");
