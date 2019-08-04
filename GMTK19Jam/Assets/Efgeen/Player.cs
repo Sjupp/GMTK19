@@ -48,10 +48,10 @@ public class Player : MonoBehaviour
 
     private void Start() {
         switch (team) {
-            case Team.One:
+            case Team.P1:
                 gamePad = GamePad.GetState(PlayerIndex.One);
                 break;
-            case Team.A:
+            case Team.P2:
                 gamePad = GamePad.GetState(PlayerIndex.Two);
                 break;
         }
@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
 
         if (Kick())
         {
+            ServiceLocator.GetAudio().PlaySound("Explosion");
             Debug.Log("ONKICK = KICK");
             return;
         }
@@ -152,6 +153,7 @@ public class Player : MonoBehaviour
 
         if (data.ammo <= 0)
         {
+            ServiceLocator.GetAudio().PlaySound("Player_NoAmmo");
             return false;
         }
 

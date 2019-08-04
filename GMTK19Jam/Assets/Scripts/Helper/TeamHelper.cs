@@ -10,10 +10,10 @@ static class TeamHelper
     {
         switch (myTeam) 
         {
-            case Team.One:
-                return Team.A;
-            case Team.A:
-                return Team.One;
+            case Team.P1:
+                return Team.P2;
+            case Team.P2:
+                return Team.P1;
             default:
                 throw new Exception("Goal::GetOppositeTeam ERROR: INVALID TEAM");
         }

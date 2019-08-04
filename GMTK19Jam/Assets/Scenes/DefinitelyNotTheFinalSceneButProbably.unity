@@ -9139,6 +9139,80 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &4624716731567690306
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4624716730257866458, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraShaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.605095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.861765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.658332
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866456, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624716730257866459, guid: ff1755fc6cb77c246adbaafd4bbf2fed,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 720934859}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff1755fc6cb77c246adbaafd4bbf2fed, type: 3}
 --- !u!65 &4784065941889481643
 BoxCollider:
   m_ObjectHideFlags: 0
