@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     #region resetvalues
     [SerializeField] private Vector3 startPos;
-    [SerializeField] private Quaternion startRot;
+    [SerializeField] private Vector3 startRot;
     #endregion
 
     private void Start() {
@@ -232,7 +232,7 @@ public class Player : MonoBehaviour
 
     public void Reset() {
         transform.position = startPos;
-        transform.rotation = startRot;
+        transform.rotation = Quaternion.Euler(startRot);
         data.ammo = 2;
     }
 }

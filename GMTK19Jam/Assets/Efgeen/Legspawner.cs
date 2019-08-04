@@ -8,6 +8,8 @@ public class Legspawner : MonoBehaviour
 
     private Collider coll;
 
+    public GameObject legObj;
+
     public bool onCooldown = false;
 
     public float maxTimer;
@@ -30,7 +32,8 @@ public class Legspawner : MonoBehaviour
             if (timer <= 0)
             {
                 onCooldown = false;
-                GetComponent<MeshRenderer>().enabled = true;
+
+                legObj.SetActive(true);
             }
 
         }
@@ -42,22 +45,21 @@ public class Legspawner : MonoBehaviour
 
         if (collider.CompareTag("Player"))
         {
+            if (onCooldown)
+            {
+                return;
+            }
 
             if (collider.GetComponent<Player>().Data.ammo == 2)
             {
                 return;
             }
 
-            collider.GetComponent<Player>().Data.ammo += 1;
-            if (collider.GetComponent<Player>().Data.ammo > 2)
-            {
-                collider.GetComponent<Player>().Data.ammo = 2;
-            }
+            collider.GetComponent<Player>().Data.ammo = 2;
 
-            onCooldown = true;
+            legObj.SetActive(false);
             timer = maxTimer;
-            GetComponent<MeshRenderer>().enabled = false;
-
+            onCooldown = true;
         }
 
     }
