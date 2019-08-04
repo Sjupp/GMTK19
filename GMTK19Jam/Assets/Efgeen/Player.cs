@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
 
     public GamePadState gamePad;
 
+    public Animator anim;
+
     #region resetvalues
     [SerializeField] private Vector3 startPos;
     [SerializeField] private Vector3 startRot;
@@ -105,6 +107,16 @@ public class Player : MonoBehaviour
         if (data.state == PlayerState.None)
         {
             Move();
+        }
+
+        if (rigidbody.velocity.sqrMagnitude <= 1.0f && anim.GetBool("isRunning") == true)
+        {
+            anim.SetBool("isRunning", false);
+        }
+        else if (rigidbody.velocity.sqrMagnitude > 1.0f && anim.GetBool("isRunning") == false)
+        {
+            Debug.Log("running");
+            anim.SetBool("isRunning", true);
         }
 
     }
@@ -211,12 +223,12 @@ public class Player : MonoBehaviour
         }
 
         Projectile temp = Instantiate(projectile, transform.position, transform.rotation, null);
-        temp.Project(this, transform.rotation * Vector3.forward, 50);
+        //temp.Project(this, transform.rotation * Vector3.forward, 50);
 
         data.ammo--;
 
         //HACK
-        //temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);
+        temp.Project(this, (FindObjectOfType<Ball>().transform.position - transform.position), 50);
 
     }
 
