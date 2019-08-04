@@ -22,13 +22,17 @@ public class CameraShake : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        startPos = camera.transform.position;
+    }
+
     Vector3 startPos;
 
     public void Shake(float shakeAmount = 5, float shakeTime = 2)
     {
         this.shakeAmount = shakeAmount;
         maxShakingTimer = shakeTime;
-        startPos = camera.transform.position;
         shakingTimer = maxShakingTimer;
         shaking = true;
     }
