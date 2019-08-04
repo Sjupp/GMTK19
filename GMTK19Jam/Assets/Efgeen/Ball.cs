@@ -102,5 +102,6 @@ public class Ball : MonoBehaviour
 
     public void Reset() {
         transform.position = startPos;
+        data.rigidbody.velocity = Vector3.zero;
     }
 }

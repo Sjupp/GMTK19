@@ -80,7 +80,7 @@ public class InterfaceManager : Singleton<InterfaceManager> {
             ServiceLocator.GetAudio().PlaySound("UI_Select");
         }
 
-        if (newState ==  InterfaceState.InGame) {
+        if (newState ==  InterfaceState.InGame && interfaceState != InterfaceState.GameOver) {
             Debug.Log("Entering game");
             ServiceLocator.GetAudio().PlaySound("Music_Gameplay01");
             ServiceLocator.GetAudio().PlaySound("VO_ReadyGo");
