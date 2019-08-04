@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
 
         bool hit = false;
 
-        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(3, 3, 3));
+        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(4, 4, 4));
 
         for (int i = 0; i < overlappingColliders.Length; i++)
         {
@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
 
                 Ball ball = overlappingColliders[i].GetComponent<Ball>();
 
-                ball.Project(this, transform.rotation * Vector3.forward, kickKickStrength);
+                ball.Project(this, (ball.transform.position - transform.position), kickKickStrength);
                 ball.Data.decrementAmount = 0.15f;
 
                 hit = true;
