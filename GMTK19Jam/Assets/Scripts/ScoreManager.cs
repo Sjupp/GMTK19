@@ -15,7 +15,9 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         try 
         {
-            ServiceLocator.GetAudio().PlaySound("VO_PublicCheer");
+            ServiceLocator.GetAudio().PlaySound("VO_Goal");
+            ServiceLocator.GetAudio().PlaySound("Explosion");
+            CameraShake.INSTANCE?.Shake(75f, 0.2f);
             float oldScore = teamScores[team];
         }
         catch(System.Exception e) 

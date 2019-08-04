@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum InterfaceState { Initial, MainMenu, OptionsMenu, InGame, InGameMenu, GameOver};
 public class InterfaceManager : Singleton<InterfaceManager> {
@@ -10,6 +11,14 @@ public class InterfaceManager : Singleton<InterfaceManager> {
 
     public Dictionary<InterfaceState, EnableInterface> OnEnableInterfaceWithState = new Dictionary<InterfaceState, EnableInterface>();
     public Dictionary<InterfaceState, EnableInterface> OnDisableInterfaceWithState = new Dictionary<InterfaceState, EnableInterface>();
+
+    #region stuff_for_controller_support
+    [SerializeField] UnityEngine.EventSystems.EventSystem eventSystem;
+    [SerializeField] GameObject startGameGO;
+    [SerializeField] GameObject mainMenuGO;
+    [SerializeField] GameObject optionsMenuGO;
+    [SerializeField] GameObject gameOverGO;
+    #endregion
 
     [SerializeField] InterfaceState interfaceState = InterfaceState.Initial;
     public InterfaceState InterfaceState 
@@ -77,6 +86,27 @@ public class InterfaceManager : Singleton<InterfaceManager> {
         }
 
         SoundStarter(newState);
+
+        switch (newState) {
+            case InterfaceState.Initial:
+                eventSystem.SetSelectedGameObject(startGameGO);
+                break;
+            case InterfaceState.MainMenu:
+                eventSystem.SetSelectedGameObject(mainMenuGO);
+                break;
+            case InterfaceState.OptionsMenu:
+                eventSystem.SetSelectedGameObject(optionsMenuGO);
+                break;
+            case InterfaceState.InGame:
+                break;
+            case InterfaceState.InGameMenu:
+                break;
+            case InterfaceState.GameOver:
+                eventSystem.SetSelectedGameObject(gameOverGO);
+                break;
+            default:
+                break;
+        }
 
         interfaceState = newState;
 

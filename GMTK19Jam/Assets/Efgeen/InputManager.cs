@@ -10,10 +10,28 @@ public class InputManager : MonoBehaviour
     public delegate void KickDelegate();
     public KickDelegate kickDelegate;
 
-    public void Upd8(int player)
+    GamePadState[] gamePadState = new GamePadState[2];
+    ButtonState[] prevState = new ButtonState[2];
+
+    public void Upd8(int player) 
     {
         Move(player);
         Kick(player);
+
+        gamePadState[player] = GamePad.GetState((PlayerIndex)player);
+
+        if (gamePadState[player].IsConnected) {
+            if (prevState[player] == ButtonState.Pressed && gamePadState[player].Buttons.Start == ButtonState.Released) {
+                if (InterfaceManager.Instance.InterfaceState == InterfaceState.InGame) {
+                    InterfaceManager.Instance.UpdateInterfaceState(InterfaceState.InGameMenu);
+                }
+                else if (InterfaceManager.Instance.InterfaceState == InterfaceState.InGameMenu) {
+                    InterfaceManager.Instance.UpdateInterfaceState(InterfaceState.InGame);
+                }
+            }
+        }
+
+        prevState[player] = gamePadState[player].Buttons.Start;
     }
 
     private void Move(int player)

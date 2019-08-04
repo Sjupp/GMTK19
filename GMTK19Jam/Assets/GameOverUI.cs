@@ -7,18 +7,20 @@ using UnityEngine.UI;
 public class GameOverUI : MonoBehaviour
 {
     Text text;
-    void Start()
+    void OnEnable()
     {
         text = GetComponent<Text>();
 
         if(ScoreManager.Instance.teamScores[Team.P2] > ScoreManager.Instance.teamScores[Team.P1]) {
-            text.text = "TEAM A WINS";
+            text.text = "TEAM P2 WINS";
         }
         else if (ScoreManager.Instance.teamScores[Team.P2] < ScoreManager.Instance.teamScores[Team.P1]) {
-            text.text = "TEAM ONE WINS";
+            text.text = "TEAM P1 WINS";
         }
         else {
             text.text = "EVERYONE LOSES";
         }
+
+        text.text += "\n THE FINAL RESULT WAS \nP1  P2\n" + ScoreManager.Instance.teamScores[Team.P1] + "   " + ScoreManager.Instance.teamScores[Team.P2];
     }
 }

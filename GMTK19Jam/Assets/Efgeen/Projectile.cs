@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
     public void Project(Player source, Vector3 direction, float speed)
     {
         ServiceLocator.GetAudio().PlaySound("Player_Projectile");
+        CameraShake.INSTANCE?.Shake(15f, 0.1f);
         data.source = source;
         data.direction = direction.normalized;
         data.speed = speed;
@@ -57,6 +58,7 @@ public class Projectile : MonoBehaviour
             }
         }
         ServiceLocator.GetAudio().PlaySound("Explosion");
+        CameraShake.INSTANCE?.Shake(50f, 0.1f);
         Destroy(gameObject);
     }
 
