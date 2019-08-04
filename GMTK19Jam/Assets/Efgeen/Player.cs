@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
 
         if (Kick())
         {
+            ServiceLocator.GetAudio().PlaySound("Explosion");
             Debug.Log("ONKICK = KICK");
             return;
         }
@@ -152,6 +153,7 @@ public class Player : MonoBehaviour
 
         if (data.ammo <= 0)
         {
+            ServiceLocator.GetAudio().PlaySound("Player_NoAmmo");
             return false;
         }
 

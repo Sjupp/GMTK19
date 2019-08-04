@@ -14,6 +14,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
     private AudioSource[] projectileFizzleAudioSource;
     private AudioSource[] projectileExplosionAudioSource;
     private AudioSource[] walkAudioSource;
+    private AudioSource[] noAmmoAudioSource;
 
     //VO
     private AudioSource[] goalAudioSource;
@@ -41,6 +42,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
         projectileFizzleAudioSource = InstantiateAudioSources(projectileFizzleAudioSource, "Player_ProjectileFizzle");
         projectileExplosionAudioSource = InstantiateAudioSources(projectileExplosionAudioSource, "Player_ProjectileExplosion");
         walkAudioSource = InstantiateAudioSources(walkAudioSource, "Player_Walk");
+        noAmmoAudioSource = InstantiateAudioSources(noAmmoAudioSource, "Player_NoAmmo");
 
 
         goalAudioSource = InstantiateAudioSources(goalAudioSource, "VO_Goal");
@@ -121,6 +123,10 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
 
             case "Player_Walk":
                 PlaySoundFromArray(walkAudioSource);
+                break;
+
+            case "Player_NoAmmo":
+                PlaySoundFromArray(noAmmoAudioSource);
                 break;
 
             case "VO_Goal":
