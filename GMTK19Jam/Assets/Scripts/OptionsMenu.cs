@@ -5,10 +5,20 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
+    public GameObject[] lights;
+
+
     [SerializeField] Toggle fullscreenToggle;
     public void ToggleFullscreen() 
     {
         Screen.fullScreen = fullscreenToggle.isOn; 
+    }
+
+    [SerializeField] Toggle lightsToggle;
+    public void ToggleLights() {
+        foreach(GameObject go in lights) {
+            go.SetActive(lightsToggle.isOn);
+        }
     }
 
     [SerializeField] Dropdown matchLength;
