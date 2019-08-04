@@ -11,6 +11,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
     private AudioSource[] kickBallAudioSource;
     private AudioSource[] kickPlayerAudioSource;
     private AudioSource[] projectileAudioSource;
+    private AudioSource[] projectileFizzleAudioSource;
     private AudioSource[] projectileExplosionAudioSource;
     private AudioSource[] walkAudioSource;
 
@@ -37,6 +38,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
         kickBallAudioSource = InstantiateAudioSources(kickBallAudioSource, "Player_KickBall");
         kickPlayerAudioSource = InstantiateAudioSources(kickPlayerAudioSource, "Player_KickPlayer");
         projectileAudioSource = InstantiateAudioSources(projectileAudioSource, "Player_Projectile");
+        projectileFizzleAudioSource = InstantiateAudioSources(projectileFizzleAudioSource, "Player_ProjectileFizzle");
         projectileExplosionAudioSource = InstantiateAudioSources(projectileExplosionAudioSource, "Player_ProjectileExplosion");
         walkAudioSource = InstantiateAudioSources(walkAudioSource, "Player_Walk");
 
@@ -110,6 +112,7 @@ public class NewAudioProvider : MonoBehaviour, IAudioService
 
             case "Player_Projectile":
                 PlaySoundFromArray(projectileAudioSource);
+                PlaySoundFromArray(projectileFizzleAudioSource);
                 break;
 
             case "Player_ProjectileExplosion":

@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
 
     public void Project(Player source, Vector3 direction, float speed)
     {
+        ServiceLocator.GetAudio().PlaySound("Player_Projectile");
         data.source = source;
         data.direction = direction.normalized;
         data.speed = speed;
@@ -55,6 +56,7 @@ public class Projectile : MonoBehaviour
                 player.ApplyKnockback(transform.rotation * Vector3.forward, 50f);
             }
         }
+        ServiceLocator.GetAudio().PlaySound("Explosion");
         Destroy(gameObject);
     }
 
