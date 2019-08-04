@@ -1,32 +1,12 @@
 fileFormatVersion: 2
-guid: f06424431741c2c4eb7445065b654a5e
+guid: a25ba61bee1c5ff4eafd50308ff8a491
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: body
-    second: {fileID: 2100000, guid: b146747d254e8024c871a703b472d0f7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: fusebox
-    second: {fileID: 2100000, guid: 365668ec53c3eb5458b857d1733ce089, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: shell
-    second: {fileID: 2100000, guid: 60e953fbbe42f2d44958b7353c7b7a18, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wires
-    second: {fileID: 2100000, guid: 199d19b4a62333d48a1196ba59ab4071, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +26,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -55,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Oneleg
+      name: jumpononeleg
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 21.5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -136,7 +116,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

@@ -12,13 +12,14 @@ public class InputManager : MonoBehaviour
 
     GamePadState[] gamePadState = new GamePadState[2];
     ButtonState[] prevState = new ButtonState[2];
+    ButtonState[] kickPrevState = new ButtonState[2];
 
     public void Upd8(int player) 
     {
+        gamePadState[player] = GamePad.GetState((PlayerIndex)player);
+
         Move(player);
         Kick(player);
-
-        gamePadState[player] = GamePad.GetState((PlayerIndex)player);
 
         if (gamePadState[player].IsConnected) {
             if (prevState[player] == ButtonState.Pressed && gamePadState[player].Buttons.Start == ButtonState.Released) {
@@ -32,6 +33,8 @@ public class InputManager : MonoBehaviour
         }
 
         prevState[player] = gamePadState[player].Buttons.Start;
+        kickPrevState[player] = gamePadState[player].Buttons.A;
+
     }
 
     private void Move(int player)
@@ -93,7 +96,7 @@ public class InputManager : MonoBehaviour
     private void Kick(int player)
     {
 
-        if (Input.GetKeyDown(GameManager.INSTANCE.players[player].kickKey) || GamePad.GetState((PlayerIndex)player).Buttons.A == ButtonState.Pressed)
+        if (Input.GetKeyDown(GameManager.INSTANCE.players[player].kickKey) || (kickPrevState[player] == ButtonState.Released && gamePadState[player].Buttons.A == ButtonState.Pressed))
         {
             GameManager.INSTANCE.players[player].OnKick();
         }
