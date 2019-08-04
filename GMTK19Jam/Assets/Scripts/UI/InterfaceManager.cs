@@ -50,7 +50,15 @@ public class InterfaceManager : Singleton<InterfaceManager> {
     /// Sets the interface state to the InterFace state matching the int.
     /// </summary>
     /// <param name="newState"></param>
-    public void UpdateInterfaceState(int newState) { UpdateInterfaceState((InterfaceState)newState); }
+    public void UpdateInterfaceState(int newState) 
+    {
+        if(newState == 3) {
+            Debug.LogWarning("You are setting the gameState value to 3 through the int variant " +
+                             "but instead you should be calling GameManager.StartGameRound " +
+                             "are you sure this is intentional?");
+        }
+        UpdateInterfaceState((InterfaceState)newState);
+    }
     /// <summary>
     /// Updates the interfaceState and invokes 
     /// OnDisableInterfaceWithState on the old state and 
