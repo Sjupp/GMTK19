@@ -2444,7 +2444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbd3fa1693bf34489107c4de49a5d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interfaceStates: 0100000002000000
+  interfaceStates: 01000000
   initialized: 0
 --- !u!114 &687463561
 MonoBehaviour:
