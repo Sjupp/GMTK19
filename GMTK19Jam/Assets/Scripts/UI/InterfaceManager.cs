@@ -76,20 +76,42 @@ public class InterfaceManager : Singleton<InterfaceManager> {
             Debug.Log(e);
         }
 
-        if(interfaceState != InterfaceState.Initial) {
-            ServiceLocator.GetAudio().PlaySound("UI_Select");
-        }
+        SoundStarter(newState);
 
-        if (newState ==  InterfaceState.InGame && interfaceState != InterfaceState.GameOver) {
-            Debug.Log("Entering game");
-            ServiceLocator.GetAudio().PlaySound("Music_Gameplay01");
-            ServiceLocator.GetAudio().PlaySound("VO_ReadyGo");
-        }
         interfaceState = newState;
 
         // Successfully changed state
 
         OnEnableInterfaceWithState[newState]?.Invoke();
+    }
+
+
+    private void SoundStarter(InterfaceState newState)
+    {
+        if (interfaceState != InterfaceState.Initial)
+        {
+            ServiceLocator.GetAudio().PlaySound("UI_Select");
+        }
+
+        if (newState == InterfaceState.InGame && interfaceState != InterfaceState.GameOver)
+        {
+            ServiceLocator.GetAudio().PlaySound("Music_Gameplay01");
+            ServiceLocator.GetAudio().PlaySound("VO_ReadyGo");
+        }
+
+        if (interfaceState == InterfaceState.GameOver && newState == InterfaceState.MainMenu)
+        {
+            ServiceLocator.GetAudio().StopSound("Music_Gameplay01");
+        }
+
+        if(InterfaceState == InterfaceState.InGame && newState == InterfaceState.GameOver)
+        {
+            ServiceLocator.GetAudio().PlaySound("VO_PublicCheer");
+        }
+        //When you go from ingame to game over, applause
+
+        //When you 
+
     }
 
     /// <summary>
