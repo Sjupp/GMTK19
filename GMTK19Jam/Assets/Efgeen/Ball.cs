@@ -10,9 +10,6 @@ public class Ball : MonoBehaviour
     private Quaternion startRot;
     #endregion
 
-    private Vector3 p1goal = new Vector3(-20, 1, 0);
-    private Vector3 p2goal = new Vector3(20, 1, 0);
-
     [SerializeField]
     private BallData data = null;
     public BallData Data
@@ -35,58 +32,6 @@ public class Ball : MonoBehaviour
         data.source = source;
         data.direction = direction;
         data.speed = speed;
-        //MaybeApplyCurve();
-    }
-
-    private void MaybeApplyCurve()
-    {
-        GetCurvePoints();
-        var number = CalculateCurveStrength();
-        Debug.Log("number: " + number);
-    }
-
-    private void GetCurvePoints()
-    {
-        Vector3 p0 = data.rigidbody.position;
-        Vector3 p1 = data.direction * (data.speed / 10.0f);
-        Vector3 p2 = GetOpponentGoal();
-    }
-
-    private Vector3 GetOpponentGoal()
-    {
-        Vector3 p2;
-        if (data.source.team == Team.One)
-        {
-            p2 = p2goal;
-        }
-        else
-        {
-            p2 = p1goal;
-        }
-
-        return p2;
-    }
-
-    private float CalculateCurveStrength()
-    {
-        float f;
-        var distanceFromGoal = (GetOpponentGoal() - data.rigidbody.position).sqrMagnitude;
-        var angleOffGoal = Vector3.Angle(data.rigidbody.position, GetOpponentGoal());
-        Debug.Log(distanceFromGoal);
-        Debug.Log(angleOffGoal);
-        f = (distanceFromGoal + angleOffGoal) / 100;
-        return f;
-    }
-
-    private Vector3 CalculateQuadraticBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
-    {
-        float u = 1 - t;
-
-        Vector3 v = Mathf.Pow(u, 2) * p0;
-        v += 2 * u * t * p1;
-        v += Mathf.Pow(t, 2) * p2;
-
-        return v;
     }
 
     private void Update()
