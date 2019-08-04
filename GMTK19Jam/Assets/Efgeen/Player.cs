@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
 
         if (Kick())
         {
+            CameraShake.INSTANCE?.Shake(50f, 0.1f);
             ServiceLocator.GetAudio().PlaySound("Explosion");
             Debug.Log("ONKICK = KICK");
             return;
