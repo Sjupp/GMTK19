@@ -42,7 +42,8 @@ public class Player : MonoBehaviour
     public GamePadState gamePad;
 
     #region resetvalues
-    private Vector3 startPos;
+    [SerializeField] private Vector3 startPos;
+    [SerializeField] private Vector3 startRot;
     #endregion
 
     private void Start() {
@@ -60,9 +61,9 @@ public class Player : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
 
-        #region setresetvalues
-        startPos = transform.position;
-        #endregion
+        //#region setresetvalues
+        //startPos = transform.position;
+        //#endregion
     }
 
     private void Update()
@@ -231,6 +232,7 @@ public class Player : MonoBehaviour
 
     public void Reset() {
         transform.position = startPos;
+        transform.rotation = Quaternion.Euler(startRot);
         data.ammo = 2;
     }
 }
