@@ -3169,7 +3169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505d10c0e28c49343967741c989e9ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lights: []
+  lights:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fullscreenToggle: {fileID: 2712788459318192392}
   lightsToggle: {fileID: 8982775751292804214}
   matchLength: {fileID: 8599764205870346674}
@@ -3830,7 +3834,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: OptionsMenu
+  m_Text: Options
 --- !u!1 &2622035325162821820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5027,7 +5031,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2622035324765418895}
         m_MethodName: SetMatchLength
         m_Mode: 1
         m_Arguments:
@@ -5107,7 +5111,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1770879e9b6af7146952925fc3a2bbd3, type: 3}
+    m_Font: {fileID: 12800000, guid: 52f7c9b7f206c9a45a10de677f65a740, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
