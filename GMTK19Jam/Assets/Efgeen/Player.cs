@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
 
         bool hit = false;
 
-        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(2, 2, 2));
+        Collider[] overlappingColliders = Physics.OverlapBox(transform.position, new Vector3(3, 3, 3));
 
         for (int i = 0; i < overlappingColliders.Length; i++)
         {
@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Projectile temp = Instantiate(projectile, transform.position, transform.rotation, null);
+        Projectile temp = Instantiate(projectile, transform.position, Quaternion.identity, null);
         //temp.Project(this, transform.rotation * Vector3.forward, 50);
 
         data.ammo--;
