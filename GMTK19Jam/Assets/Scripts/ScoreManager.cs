@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Team { One, A };
+public enum Team { P1, P2 };
 public class ScoreManager : Singleton<ScoreManager>
 {
-    public Dictionary<Team, float> teamScores = new Dictionary<Team, float> { { Team.One, 0 }, { Team.A, 0 } };
+    public Dictionary<Team, float> teamScores = new Dictionary<Team, float> { { Team.P1, 0 }, { Team.P2, 0 } };
 
     public delegate void ScoreChangedDelegate(Team team, float delta, float newScore);
     public event ScoreChangedDelegate OnScoreChanged;
@@ -15,6 +15,7 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         try 
         {
+            ServiceLocator.GetAudio().PlaySound("VO_PublicCheer");
             float oldScore = teamScores[team];
         }
         catch(System.Exception e) 
@@ -31,8 +32,8 @@ public class ScoreManager : Singleton<ScoreManager>
         //teamScores[Team.A] = 0;
         //teamScores[Team.One] = 0;
 
-        UpdateScore(Team.One, -teamScores[Team.One]);
-        UpdateScore(Team.A, -teamScores[Team.A]);
+        UpdateScore(Team.P1, -teamScores[Team.P1]);
+        UpdateScore(Team.P2, -teamScores[Team.P2]);
     }
 
     //private void Update() 

@@ -48,10 +48,10 @@ public class Player : MonoBehaviour
 
     private void Start() {
         switch (team) {
-            case Team.One:
+            case Team.P1:
                 gamePad = GamePad.GetState(PlayerIndex.One);
                 break;
-            case Team.A:
+            case Team.P2:
                 gamePad = GamePad.GetState(PlayerIndex.Two);
                 break;
         }
