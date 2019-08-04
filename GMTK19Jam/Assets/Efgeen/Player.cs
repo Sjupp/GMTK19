@@ -109,6 +109,10 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
+        if (rigidbody == null) {
+            Debug.Log("Click " + name, this);
+            rigidbody = GetComponent<Rigidbody>();
+        }
         rigidbody.velocity = data.normalizedMovementDirection * data.movementSpeed;
     }
 
