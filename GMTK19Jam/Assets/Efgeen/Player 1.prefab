@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2242755426075322895}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 908856b4e2284ab45a23535ee98bd29e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -117,8 +117,8 @@ MonoBehaviour:
   data:
     state: 0
     normalizedMovementDirection: {x: 0, y: 0, z: 0}
-    movementSpeed: 10
-    rotationSpeed: 1000
+    movementSpeed: 20
+    rotationSpeed: 850
     knockbackPower: 50
     knockbackDuration: 0.1
     knockbackTimer: 0.1
@@ -128,8 +128,8 @@ MonoBehaviour:
     type: 3}
   team: 0
   anim: {fileID: 2809828516985161200}
-  startPos: {x: 0, y: 0, z: 0}
-  startRot: {x: 0, y: 0, z: 0}
+  startPos: {x: -6, y: 1.5, z: 0}
+  startRot: {x: 0, y: 90, z: 0}
 --- !u!54 &2242755426075322897
 Rigidbody:
   m_ObjectHideFlags: 0
